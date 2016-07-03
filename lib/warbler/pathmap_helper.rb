@@ -5,6 +5,14 @@
 # See the file LICENSE.txt for details.
 #++
 
+class String
+  alias_method :protected_pathmap_replace, :pathmap_replace
+  # public
+  def pathmap_replace(patterns, &block)
+    protected_pathmap_replace(patterns, &block)
+  end
+end
+
 module Warbler
   module PathmapHelper
     def apply_pathmaps(config, file, pathmaps)
